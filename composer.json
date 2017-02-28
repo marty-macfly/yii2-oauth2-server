@@ -1,0 +1,29 @@
+{
+  "name": "macfly/yii2-oauth2-server",
+  "description": "Wrapper for filsh yii2-oauth2-server provide authorize, token, user controller",
+  "keywords": ["yii", "extension", "module", "oauth", "oauth2"],
+  "homepage": "https://github.com/macfly/yii2-oauth2-server",
+  "type": "yii2-extension",
+  "license": "MIT",
+  "support": {
+		"source": "https://github.com/macfly/yii2-oauth2-server"
+  },
+  "authors": [
+    {
+      "name": "Charles DELFLY",
+      "email": "c.delfly@linkbynet.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+		"filsh/yii2-oauth2-server": ">=2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+			"macfly\\oauth2server\\": "src/"
+    }
+  },
+  "extra": {
+		"bootstrap": "macfly\\oauth2server\\Bootstrap"
+  }
+}
