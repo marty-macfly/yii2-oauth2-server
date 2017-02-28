@@ -40,16 +40,16 @@ To use this extension,  simply add the following code in your application config
             'tokenParamName' => 'accessToken',
             'tokenAccessLifetime' => 3600 * 24, // Default token lifetime
             'userModel' => 'app\models\User',
-						'userAttributes'	=> [ // List of user attributes you want to provide through the /oauth2/user api call
-							'id',
-							'username',
-							'email',
-						],
+           'userAttributes'	=> [ // List of user attributes you want to provide through the /oauth2/user api call
+             'id',
+             'username',
+             'email',
+            ],
         ]
     ],
 ```
 
-Can be usefull to enable in requet component the json parser (http://www.yiiframework.com/doc-2.0/guide-rest-quick-start.html#enabling-json-input) and pretty url (http://www.yiiframework.com/doc-2.0/guide-runtime-routing.html#using-pretty-urls).
+Can be usefull to enable in requet component the [json parser ](http://www.yiiframework.com/doc-2.0/guide-rest-quick-start.html#enabling-json-input) and [pretty url](http://www.yiiframework.com/doc-2.0/guide-runtime-routing.html#using-pretty-urls).
 
 Also, extend ```app\models\User``` - user model - implementing the interface ```\OAuth2\Storage\UserCredentialsInterface```, so the oauth2 credentials data stored in user table.
 
