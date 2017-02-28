@@ -1,14 +1,14 @@
 yii2-oauth2-server
 ==================
 
-A wrapper for Filsh/yii2-oauth2server(https://github.com/Filsh/yii2-oauth2-server) which implement an OAuth2 Server(https://github.com/bshaffer/oauth2-server-php)
+A wrapper for [Filsh/yii2-oauth2server](https://github.com/Filsh/yii2-oauth2-server) which implement an [OAuth2 Server](https://github.com/bshaffer/oauth2-server-php)
 
 Add missing code that make it easy to use with social network aware user module like the one from dektrium/yii2-user(https://github.com/dektrium/yii2-user)
 
 Add controller:
 
-* Authorize (http://bshaffer.github.io/oauth2-server-php-docs/controllers/authorize/)
-* Token (http://bshaffer.github.io/oauth2-server-php-docs/controllers/token/)
+* [Authorize](http://bshaffer.github.io/oauth2-server-php-docs/controllers/authorize/)
+* [Token](http://bshaffer.github.io/oauth2-server-php-docs/controllers/token/)
 * User (Provide user information id, username, e-mail, ...)
 
 Installation
@@ -38,11 +38,18 @@ To use this extension,  simply add the following code in your application config
         'oauth2' => [
             'class' => 'macfly\oauth2server\Module',
             'tokenParamName' => 'accessToken',
-            'tokenAccessLifetime' => 3600 * 24,
+            'tokenAccessLifetime' => 3600 * 24, // Default token lifetime
             'userModel' => 'app\models\User',
+						'userAttributes'	=> [ // List of user attributes you want to provide through the /oauth2/user api call
+							'id',
+							'username',
+							'email',
+						],
         ]
     ],
 ```
+
+Can be usefull to enable in requet component the json parser (http://www.yiiframework.com/doc-2.0/guide-rest-quick-start.html#enabling-json-input) and pretty url (http://www.yiiframework.com/doc-2.0/guide-runtime-routing.html#using-pretty-urls).
 
 Also, extend ```app\models\User``` - user model - implementing the interface ```\OAuth2\Storage\UserCredentialsInterface```, so the oauth2 credentials data stored in user table.
 
@@ -65,13 +72,19 @@ class User extends app\models\User implements \OAuth2\Storage\UserCredentialsInt
 The next step you should run migration
 
 ```php
-yii migrate --migrationPath=@vendor/filsh/yii2-oauth2-server/migrations
+yii migrate --migrationPath=@vendor/macfly/yii2-oauth2-server/src/migrations
 ```
 
-this migration create the oauth2 database scheme and insert test user credentials ```testclient:testpass``` for ```http://fake/```
+this migration create the oauth2 database scheme and insert test user credentials ```testclient:testpass``` for ```http://127.0.0.1:8888/user/security/auth?authclient=oauth2```
 
 Usage
 -----
+
+# List of available actions
+
+- **/oauth2/authorize** 
+- **/oauth2/token** 
+- **/oauth2/user** 
 
 You can see the filsh documentation to use token (https://github.com/Filsh/yii2-oauth2-server/tree/v2.0.0#usage)
 
