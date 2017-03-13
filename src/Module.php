@@ -30,15 +30,18 @@ class Module extends \yii\base\Module
 					'user_credentials'									=> $this->userModel,
 				],
 				'grantTypes'					=> [
-					'authorization_code' => [
+					'authorization_code'	=> [
 						'class'														=> 'OAuth2\GrantType\AuthorizationCode',
 					],
-					'user_credentials'	=> [
-						'class'														=> 'OAuth2\GrantType\UserCredentials',
+					'client_credentials'	=> [
+						'class'														=> 'OAuth2\GrantType\ClientCredentials',
 					],
-					'refresh_token'			=> [
+					'refresh_token'				=> [
 						'class'														=> 'OAuth2\GrantType\RefreshToken',
 						'always_issue_new_refresh_token'	=> true
+					],
+					'user_credentials'		=> [
+						'class'														=> 'OAuth2\GrantType\UserCredentials',
 					],
 				],
 			],
