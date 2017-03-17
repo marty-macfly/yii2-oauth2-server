@@ -82,9 +82,13 @@ Usage
 
 # List of available actions
 
-- **/oauth2/authorize** 
-- **/oauth2/token** 
-- **/oauth2/user** 
+- **/oauth2/authorize**
+- **/oauth2/token**
+- **/oauth2/user**
+
+# Manage client credentials and current access token via web interface
+
+- Pretty Url's: **/oauth2/clients**
+- No pretty Url's: **index.php?r=oauth2/clients**
 
 You can see the filsh documentation to use token (https://github.com/Filsh/yii2-oauth2-server/tree/v2.0.0#usage)
-
