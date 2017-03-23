@@ -3,7 +3,7 @@ yii2-oauth2-server
 
 A wrapper for [Filsh/yii2-oauth2server](https://github.com/Filsh/yii2-oauth2-server) which implement an [OAuth2 Server](https://github.com/bshaffer/oauth2-server-php)
 
-Add missing code that make it easy to use with social network aware user module like the one from dektrium/yii2-user(https://github.com/dektrium/yii2-user), you can use the [macfly/yii2-authclient-oauth2](https://github.com/Marty-Macfly/yii2-authclient-oauth2) which work with it natively
+Add missing code that make it easy to use with social network aware user module like the one from [dektrium/yii2-user](https://github.com/dektrium/yii2-user), you can use the [macfly/yii2-authclient-oauth2](https://github.com/Marty-Macfly/yii2-authclient-oauth2) which work with it natively
 
 Add controller:
 
