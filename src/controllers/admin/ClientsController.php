@@ -82,21 +82,6 @@ class ClientsController extends Controller
         }
     }
 
-
-    public function actionAccesstoken($client_id)
-    {
-        $model = $this->findModel($client_id);
-        $array_client_id = ArrayHelper::getColumn($model->oauthAccessTokens, 'client_id');
-        $array_client_id = empty($array_client_id) ? -1 : $array_client_id;
-        $searchModel = new SearchAccesstokensModel();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams,$array_client_id);
-        return $this->render('accesstokens', [
-            'model' => $model,
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider
-        ]);
-    }
-
     /**
      * Updates an existing OauthClients model.
      * If update is successful, the browser will be redirected to the 'view' page.
