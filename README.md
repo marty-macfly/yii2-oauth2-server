@@ -78,7 +78,7 @@ yii migrate --migrationPath=@vendor/macfly/yii2-oauth2-server/src/migrations
 this migration create the oauth2 database scheme and insert test user credentials ```testclient:testpass``` for ```http://127.0.0.1:8888/user/security/auth?authclient=oauth2```
 
 Usage
------
+------------
 
 # List of available actions
 
@@ -86,9 +86,15 @@ Usage
 - **/oauth2/token**
 - **/oauth2/user**
 
-# Manage client credentials and current access token via web interface
-
-- Pretty Url's: **/oauth2/clients**
-- No pretty Url's: **index.php?r=oauth2/clients**
-
 You can see the filsh documentation to use token (https://github.com/Filsh/yii2-oauth2-server/tree/v2.0.0#usage)
+
+Admin interface 
+-----
+
+Manage client credentials
+
+- **/oauth2/admin/clients**
+
+Manage access token
+
+- **/oauth2/admin/accesstokens**

@@ -1,6 +1,6 @@
 <?php
 
-namespace macfly\oauth2server\controllers;
+namespace macfly\oauth2server\controllers\admin;
 
 use Yii;
 use filsh\yii2\oauth2server\models\OauthClients;

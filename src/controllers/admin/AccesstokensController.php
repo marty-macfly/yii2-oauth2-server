@@ -1,6 +1,6 @@
 <?php
 
-namespace macfly\oauth2server\controllers;
+namespace macfly\oauth2server\controllers\admin;
 
 use Yii;
 use filsh\yii2\oauth2server\models\OauthAccessTokens;
@@ -61,10 +61,11 @@ class AccesstokensController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($client_id)
+    public function actionCreate($client_id = null)
     {
         $model = new OauthAccessTokens();
-        $model->client_id = $client_id;
+        $model->client_id			= $client_id;
+				$model->access_token	= substr(hash('sha512', mt_rand() . mt_rand() . mt_rand() . mt_rand() . microtime(true) . uniqid(mt_rand(), true)), 0, 40);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->access_token]);
