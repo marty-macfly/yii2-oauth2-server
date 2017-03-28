@@ -7,8 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model filsh\yii2\oauth2server\models\OauthAccessTokens */
 
 $this->title = $model->access_token;
-$this->params['breadcrumbs'][] = ['label' => 'Clients', 'url' => ['clients/index']];
-$this->params['breadcrumbs'][] = ['label' => $model->client_id, 'url' => ['clients/accesstoken', 'client_id' => $model->client_id]];
+$this->params['breadcrumbs'][] = ['label' => 'Access Tokens', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="oauth-access-tokens-view">
