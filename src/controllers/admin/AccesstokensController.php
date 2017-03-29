@@ -3,11 +3,12 @@
 namespace macfly\oauth2server\controllers\admin;
 
 use Yii;
-use filsh\yii2\oauth2server\models\OauthAccessTokens;
-use macfly\oauth2server\models\SearchAccesstokensModel;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+
+use macfly\oauth2server\models\OauthAccessTokens;
+use macfly\oauth2server\models\SearchAccesstokensModel;
 
 /**
  * AccesstokensController implements the CRUD actions for OauthAccessTokens model.

@@ -95,6 +95,20 @@ Manage client credentials
 
 - **/oauth2/admin/clients**
 
+CRUD operations
+
+- **/oauth2/admin/clients/index**
+- **/oauth2/admin/clients/create**
+- **/oauth2/admin/clients/update**
+- **/oauth2/admin/clients/delete**
+
 Manage access token
 
 - **/oauth2/admin/accesstokens**
+
+CRUD operations
+
+- **/oauth2/admin/accesstokens/index**
+- **/oauth2/admin/accesstokens/create**
+- **/oauth2/admin/accesstokens/update**
+- **/oauth2/admin/accesstokens/delete**

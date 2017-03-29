@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
               'label'	=>'Access Token',
               'content'	=> function($model){
                 $label = "<span class='pull-right'><kbd>" . count($model->oauthAccessTokens) . "</kbd></span><span class='pull-left'>Access token</span>";
-                return Html::a($label, ['accesstokens', 'SearchAccesstokensModel[client_id]' => $model->client_id]);
+                return Html::a($label, ['admin/accesstokens', 'SearchAccesstokensModel[client_id]' => $model->client_id]);
               },
             ],
             ['class' => 'yii\grid\ActionColumn'],
