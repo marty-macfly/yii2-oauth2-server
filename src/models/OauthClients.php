@@ -5,7 +5,7 @@ namespace macfly\oauth2server\models;
 use Yii;
 use macfly\oauth2server\behaviors\BlameableBehavior;
 
-class OauthAccessTokens extends \filsh\yii2\oauth2server\models\OauthAccessTokens
+class OauthClients extends \filsh\yii2\oauth2server\models\OauthClients
 {
 	/**
 	 * @inheritdoc

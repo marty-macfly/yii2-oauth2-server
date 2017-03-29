@@ -2,10 +2,11 @@
 
 namespace macfly\oauth2server\controllers\admin;
 
-use Yii;
-use filsh\yii2\oauth2server\models\OauthClients;
+use macfly\oauth2server\models\OauthClients;
 use macfly\oauth2server\models\SearchClientsModel;
 use macfly\oauth2server\models\SearchAccesstokensModel;
+
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

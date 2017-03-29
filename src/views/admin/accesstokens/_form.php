@@ -25,8 +25,6 @@ use filsh\yii2\oauth2server\models\OauthClients;
             'tabindex' => '1']])->dropDownList(ArrayHelper::map(OauthClients::find()->all(), 'client_id', 'client_id'));
     ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
-
 		<?= $form->field($model, 'expires')->widget(DatePicker::classname(), [
 			'dateFormat' => 'yyyy-MM-dd',
 		]);?>
