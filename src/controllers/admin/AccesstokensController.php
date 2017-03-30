@@ -74,6 +74,7 @@ class AccesstokensController extends Controller
   {
 		$model = new OauthAccessTokens();
 		$model->client_id			= $client_id;
+		$model->expires				= Yii::$app->formatter->asDate(time() + $this->module->tokenAccessLifetime, 'yyyy-MM-dd');
 		$model->access_token	= substr(hash('sha512', mt_rand() . mt_rand() . mt_rand() . mt_rand() . microtime(true) . uniqid(mt_rand(), true)), 0, 40);
 		
 		if ($model->load(Yii::$app->request->post()) && $model->save())
