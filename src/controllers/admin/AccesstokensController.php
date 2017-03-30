@@ -21,7 +21,7 @@ class AccesstokensController extends Controller
 	public function behaviors()
 	{
 		return [
-			'rules'	=> $this->module->accesstokensRules,
+			'access'	=> $this->module->accesstokensAccessRules,
 			'verbs' => [
 				'class' => VerbFilter::className(),
 					'actions' => [

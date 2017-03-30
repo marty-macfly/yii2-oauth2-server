@@ -23,7 +23,7 @@ class ClientsController extends Controller
 	public function behaviors()
 	{
 		return [
-			'rules' => $this->module->clientsRules,
+			'access' => $this->module->clientsAccessRules,
 			'verbs' => [
 				'class' => VerbFilter::className(),
 					'actions' => [
