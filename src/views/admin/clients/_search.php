@@ -17,8 +17,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'client_id') ?>
 
-    <?= $form->field($model, 'client_secret') ?>
-
     <?= $form->field($model, 'redirect_uri') ?>
 
     <?= $form->field($model, 'grant_types') ?>

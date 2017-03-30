@@ -25,7 +25,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'client_id',
-            'client_secret',
             'redirect_uri',
             'grant_types',
             'scope',
