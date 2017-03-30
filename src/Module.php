@@ -11,6 +11,8 @@ class Module extends \yii\base\Module
 	public $tokenAccessLifetime	= 3600 * 24;
 	public $userModel						= 'app\models\User';
 	public $adminRole						= 'admin';
+	public $accesstokensRules		= [];
+	public $clientsRules				= [];
 
 	public $userAttributes			= [
 			'id',
