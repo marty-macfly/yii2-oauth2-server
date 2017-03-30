@@ -45,6 +45,9 @@ To use this extension,  simply add the following code in your application config
              'username',
              'email',
             ],
+						'adminRole' => 'admin', // Rbac permission name to manage all users oauth client and oauth access token
+            'accesstokensAccessRules' => [], // access rule for admin/accesstokens controller
+            'clientsAccessRules' => [], // access rule for admin/clients controller
         ]
     ],
 ```
