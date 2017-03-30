@@ -38,13 +38,20 @@ class ClientsController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new SearchClientsModel();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+			$params = Yii::$app->request->queryParams;
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+			if(!Yii::$app->user->can($this->module->adminRole))
+			{
+				$params['SearchClientsModel']['user_id'] = Yii::$app->user->id;
+			}
+
+      $searchModel = new SearchClientsModel();
+      $dataProvider = $searchModel->search($params);
+
+      return $this->render('index', [
+          'searchModel' => $searchModel,
+          'dataProvider' => $dataProvider,
+      ]);
     }
 
     /**
@@ -74,11 +81,13 @@ class ClientsController extends Controller
               return $this->redirect(['view', 'id' => $model->client_id]);
             else
               return $this->render('create', [
-                  'model' => $model,
+                  'model'		=> $model,
+									'module'	=> $this->module,
               ]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'model'		=> $model,
+								'module'	=> $this->module,
             ]);
         }
     }
@@ -99,11 +108,13 @@ class ClientsController extends Controller
               return $this->redirect(['view', 'id' => $model->client_id]);
             else
               return $this->render('update', [
-                  'model' => $model,
+                  'model'		=> $model,
+									'module'	=> $this->module,
               ]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'model' 	=> $model,
+								'module'	=> $this->module,
             ]);
         }
     }

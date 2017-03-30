@@ -14,27 +14,34 @@ use filsh\yii2\oauth2server\models\OauthClients;
 
 <div class="oauth-access-tokens-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+  <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'access_token')->textInput(['maxlength' => true]) ?>
+  <?= $form->field($model, 'access_token')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'client_id', [
-        'inputOptions' => [
-            'autofocus' => 'autofocus',
-            'class' => 'form-control',
-            'tabindex' => '1']])->dropDownList(ArrayHelper::map(OauthClients::find()->all(), 'client_id', 'client_id'));
-    ?>
+  <?= $form->field($model, 'client_id', [
+	  'inputOptions' => [
+    'autofocus' => 'autofocus',
+    'class' => 'form-control',
+    'tabindex' => '1']])->dropDownList(ArrayHelper::map(OauthClients::find()->all(), 'client_id', 'client_id'));
+  ?>
 
-		<?= $form->field($model, 'expires')->widget(DatePicker::classname(), [
-			'dateFormat' => 'yyyy-MM-dd',
-		]);?>
+	<?= $form->field($model, 'expires')->widget(DatePicker::classname(), [
+		'dateFormat' => 'yyyy-MM-dd',
+	]);?>
 
-    <?= $form->field($model, 'scope')->textInput(['maxlength' => true]) ?>
+	<?php
+    if(\Yii::$app->user->can($module->adminRole))
+    {
+			echo $form->field($model, 'user_id')->textInput();
+    }
+	?>
 
-    <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-    </div>
+  <?= $form->field($model, 'scope')->textInput(['maxlength' => true]) ?>
 
-    <?php ActiveForm::end(); ?>
+  <div class="form-group">
+ 		<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+  </div>
+
+	<?php ActiveForm::end(); ?>
 
 </div>

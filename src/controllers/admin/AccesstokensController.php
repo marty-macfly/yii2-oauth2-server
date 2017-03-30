@@ -30,20 +30,27 @@ class AccesstokensController extends Controller
         ];
     }
 
-    /**
-     * Lists all OauthAccessTokens models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new SearchAccesstokensModel();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+	/**
+	 * Lists all OauthAccessTokens models.
+	 * @return mixed
+	 */
+	public function actionIndex()
+	{
+		$params	= Yii::$app->request->queryParams;
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+		if(!Yii::$app->user->can($this->module->adminRole))
+		{
+			$params['SearchAccesstokensModel']['user_id']	= Yii::$app->user->id;				
+		}
+
+		$searchModel	= new SearchAccesstokensModel();
+		$dataProvider	= $searchModel->search($params);
+
+		return $this->render('index', [
+			'searchModel' => $searchModel,
+			'dataProvider' => $dataProvider,
+		]);
+	}
 
     /**
      * Displays a single OauthAccessTokens model.
@@ -72,7 +79,8 @@ class AccesstokensController extends Controller
             return $this->redirect(['view', 'id' => $model->access_token]);
         } else {
             return $this->render('create', [
-                'model' => $model
+                'model'		=> $model,
+								'module'	=> $this->module,
             ]);
         }
     }
@@ -91,7 +99,8 @@ class AccesstokensController extends Controller
             return $this->redirect(['view', 'id' => $model->access_token]);
         } else {
             return $this->render('update', [
-                'model' => $model,
+                'model'		=> $model,
+								'module'	=> $this->module,
             ]);
         }
     }

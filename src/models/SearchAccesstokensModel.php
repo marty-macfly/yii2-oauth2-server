@@ -39,7 +39,7 @@ class SearchAccesstokensModel extends OauthAccessTokens
      *
      * @return ActiveDataProvider
      */
-    public function search($params,$array_client_id=null)
+    public function search($params, $array_client_id=null)
     {
         $query = OauthAccessTokens::find();
 
