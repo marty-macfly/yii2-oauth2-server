@@ -22,15 +22,21 @@ class ClientsController extends Controller
 	 */
 	public function behaviors()
 	{
-		return [
-			'access' => $this->module->clientsAccessRules,
-			'verbs' => [
-				'class' => VerbFilter::className(),
-					'actions' => [
-						'delete' => ['POST'],
-					],
-			],
-		];
+    $behaviors = [
+      'verbs' => [
+        'class' => VerbFilter::className(),
+          'actions' => [
+            'delete' => ['POST'],
+        ],
+      ],
+    ];
+
+    if(!empty($this->module->clientsAccessRules))
+    {
+      $behaviors['access']  = $this->module->clientsAccessRules;
+    }
+
+    return $behaviors;
 	}
 
 	/**
