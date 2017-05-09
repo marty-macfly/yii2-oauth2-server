@@ -1,0 +1,20 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+     - "8080:80"
+    environment:
+      DB_TYPE: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASS: t8wTqe5DUC
+      DB_NAME: oauth2server
+    depends_on:
+      - db
+  db:
+    image: "mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: t8wTqe5DUC
+      MYSQL_DATABASE: oauth2server
