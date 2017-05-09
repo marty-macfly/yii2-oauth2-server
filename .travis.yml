@@ -44,4 +44,4 @@ install:
   - docker ps
   # - docker exec yii2testoauth2_web_1 service apache2 restart
   # - docker exec yii2testoauth2_web_1 su www-data -s /bin/bash -c '/wait-for-it.sh db:3306'
-  - docker exec yii2oauth2server_web_1 /bin/bash -c '/run.sh | grep -q OK'
+  - docker exec yii2oauth2server_web_1 /bin/bash -c '/run.sh'
