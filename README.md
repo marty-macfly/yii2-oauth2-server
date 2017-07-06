@@ -49,6 +49,14 @@ To use this extension,  simply add the following code in your application config
             'accesstokensAccessRules' => [], // access rule for admin/accesstokens controller
             'clientsAccessRules' => [], // access rule for admin/clients controller
         ]
+				// yii2-oauth2-server is using the kartik\datecontrol\Module so you should define the configuration of the module
+				// See more details at http://demos.krajee.com/datecontrol
+        'datecontrol' =>  [
+            'class'             => 'kartik\datecontrol\Module',
+            'ajaxConversion'    => true,
+            'autoWidget'        => true,
+            'saveTimezone'      => 'UTC',
+        ],
     ],
 ```
 
