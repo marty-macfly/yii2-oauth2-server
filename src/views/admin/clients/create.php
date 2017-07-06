@@ -12,11 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="oauth-clients-create">
 
-  <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-  <?= $this->render('_form', [
-		'model'		=> $model,
-		'module'	=> $module,
-  ]) ?>
+    <?= $this->render('_form', [
+        'model'		=> $model,
+        'module'	=> $module,
+    ]) ?>
 
 </div>

@@ -6,7 +6,7 @@
   "type": "yii2-extension",
   "license": "MIT",
   "support": {
-		"source": "https://github.com/macfly/yii2-oauth2-server"
+    "source": "https://github.com/macfly/yii2-oauth2-server"
   },
   "authors": [
     {
@@ -15,17 +15,17 @@
     }
   ],
   "require": {
-    "yiisoft/yii2": "*",
-		"kartik-v/yii2-datecontrol": "*",
-		"kartik-v/yii2-widget-datetimepicker": "*",
-		"filsh/yii2-oauth2-server": ">=2.0.0"
+    "yiisoft/yii2": "2.0.12",
+    "kartik-v/yii2-datecontrol": "1.9.0.x-dev",
+    "kartik-v/yii2-widget-datetimepicker": "1.2.0.x-dev",
+    "filsh/yii2-oauth2-server": "2.0.1"
   },
   "autoload": {
     "psr-4": {
-			"macfly\\oauth2server\\": "src/"
+      "macfly\\oauth2server\\": "src/"
     }
   },
   "extra": {
-		"bootstrap": "macfly\\oauth2server\\Bootstrap"
+    "bootstrap": "macfly\\oauth2server\\Bootstrap"
   }
 }

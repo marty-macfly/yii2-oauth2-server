@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Oauth Clients', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+    <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -30,13 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'scope',
             'user_id',
             'access_token'	=> [
-              'label'	=>'Access Token',
-              'content'	=> function($model){
-                $label = "<span class='pull-right'><kbd>" . count($model->oauthAccessTokens) . "</kbd></span><span class='pull-left'>Access token</span>";
-                return Html::a($label, ['admin/accesstokens', 'SearchAccesstokensModel[client_id]' => $model->client_id]);
-              },
+                'label'	=>'Access Token',
+                'content'	=> function($model){
+                    $label = "<span class='pull-right'><kbd>" . count($model->oauthAccessTokens) . "</kbd></span><span class='pull-left'>Access token</span>";
+                    return Html::a($label, ['admin/accesstokens', 'SearchAccesstokensModel[client_id]' => $model->client_id]);
+                },
             ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-<?php Pjax::end(); ?></div>
+    <?php Pjax::end(); ?></div>

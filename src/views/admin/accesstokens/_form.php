@@ -14,36 +14,36 @@ use filsh\yii2\oauth2server\models\OauthClients;
 
 <div class="oauth-access-tokens-form">
 
-	<?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
-	<?= $form->field($model, 'access_token')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'access_token')->textInput(['maxlength' => true]) ?>
 
-	<?= $form->field($model, 'client_id', [
-		'inputOptions' => [
-		'autofocus' => 'autofocus',
-		'class' => 'form-control',
-		'tabindex' => '1']])->dropDownList(ArrayHelper::map(OauthClients::find()->all(), 'client_id', 'client_id'));
-	?>
+    <?= $form->field($model, 'client_id', [
+        'inputOptions' => [
+            'autofocus' => 'autofocus',
+            'class' => 'form-control',
+            'tabindex' => '1']])->dropDownList(ArrayHelper::map(OauthClients::find()->all(), 'client_id', 'client_id'));
+    ?>
 
-	<?= $form->field($model, 'expires')->widget(DateControl::classname(), [
-		'type'				=> 'datetime',
-		'saveFormat'	=> 'php:Y-m-d H:i:s',
-		]);
-	?>
+    <?= $form->field($model, 'expires')->widget(DateControl::classname(), [
+        'type'				=> 'datetime',
+        'saveFormat'	=> 'php:Y-m-d H:i:s',
+    ]);
+    ?>
 
-	<?php
-		if(\Yii::$app->user->can($module->adminRole))
-		{
-			echo $form->field($model, 'user_id')->textInput();
-		}
-	?>
+    <?php
+    if(\Yii::$app->user->can($module->adminRole))
+    {
+        echo $form->field($model, 'user_id')->textInput();
+    }
+    ?>
 
-	<?= $form->field($model, 'scope')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'scope')->textInput(['maxlength' => true]) ?>
 
-	<div class="form-group">
-		<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	</div>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
 
-	<?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
 
 </div>

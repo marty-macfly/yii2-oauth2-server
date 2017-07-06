@@ -11,9 +11,9 @@ $this->title = "Oauth Access Tokens";
 
 if(!is_null($searchModel->client_id))
 {
-	$this->title .= sprintf(" of: %s", $searchModel->client_id);
-	$this->params['breadcrumbs'][] = ['label' => 'Oauth Clients', 'url' => ['admin/clients/index']];
-	$this->params['breadcrumbs'][] = ['label' => $searchModel->client_id, 'url' => ['admin/clients/view', 'id' => $searchModel->client_id]];
+    $this->title .= sprintf(" of: %s", $searchModel->client_id);
+    $this->params['breadcrumbs'][] = ['label' => 'Oauth Clients', 'url' => ['admin/clients/index']];
+    $this->params['breadcrumbs'][] = ['label' => $searchModel->client_id, 'url' => ['admin/clients/view', 'id' => $searchModel->client_id]];
 }
 
 $this->params['breadcrumbs'][] = $this->title;
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Access Token', ['create', 'client_id' => $searchModel->client_id], ['class' => 'btn btn-success']) ?>
     </p>
- <?= GridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_id',
             'expires:datetime',
             'scope',
-						['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}']
+            ['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}']
         ],
     ]); ?>
 </div>

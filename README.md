@@ -34,30 +34,30 @@ To use this extension,  simply add the following code in your application config
 
 ```php
 'modules'=>[
-        //other modules .....
-        'oauth2' => [
-            'class' => 'macfly\oauth2server\Module',
-            'tokenParamName' => 'accessToken',
-            'tokenAccessLifetime' => 3600 * 24, // Default token lifetime
-            'userModel' => 'app\models\User',
-           'userAttributes'	=> [ // List of user attributes you want to provide through the /oauth2/user api call
-             'id',
-             'username',
-             'email',
-            ],
-						'adminRole' => 'admin', // Rbac permission name to manage all users oauth client and oauth access token
-            'accesstokensAccessRules' => [], // access rule for admin/accesstokens controller
-            'clientsAccessRules' => [], // access rule for admin/clients controller
-        ]
-				// yii2-oauth2-server is using the kartik\datecontrol\Module so you should define the configuration of the module
-				// See more details at http://demos.krajee.com/datecontrol
-        'datecontrol' =>  [
-            'class'             => 'kartik\datecontrol\Module',
-            'ajaxConversion'    => true,
-            'autoWidget'        => true,
-            'saveTimezone'      => 'UTC',
+    //other modules .....
+    'oauth2' => [
+        'class' => 'macfly\oauth2server\Module',
+        'tokenParamName' => 'accessToken',
+        'tokenAccessLifetime' => 3600 * 24, // Default token lifetime
+        'userModel' => 'app\models\User',
+        'userAttributes'	=> [ // List of user attributes you want to provide through the /oauth2/user api call
+            'id',
+            'username',
+            'email',
         ],
+        'adminRole' => 'admin', // Rbac permission name to manage all users oauth client and oauth access token
+        'accesstokensAccessRules' => [], // access rule for admin/accesstokens controller
+        'clientsAccessRules' => [], // access rule for admin/clients controller
+    ]
+    // yii2-oauth2-server is using the kartik\datecontrol\Module so you should define the configuration of the module
+    // See more details at http://demos.krajee.com/datecontrol
+    'datecontrol' =>  [
+        'class'             => 'kartik\datecontrol\Module',
+        'ajaxConversion'    => true,
+        'autoWidget'        => true,
+        'saveTimezone'      => 'UTC',
     ],
+],
 ```
 
 Can be usefull to enable in requet component the [json parser ](http://www.yiiframework.com/doc-2.0/guide-rest-quick-start.html#enabling-json-input) and [pretty url](http://www.yiiframework.com/doc-2.0/guide-runtime-routing.html#using-pretty-urls).
