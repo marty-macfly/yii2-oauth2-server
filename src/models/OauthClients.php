@@ -28,4 +28,9 @@ class OauthClients extends \filsh\yii2\oauth2server\models\OauthClients
 
 		return $rules;
 	}
+
+  public function getAccessTokens()
+  {
+    return $this->hasMany(OauthAccessTokens::className(), ['client_id' => 'client_id']);
+  }
 }
