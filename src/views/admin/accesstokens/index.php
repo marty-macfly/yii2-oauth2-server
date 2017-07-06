@@ -31,11 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'access_token',
             'client_id',
             'user_id',
-            'expires',
-						[
-							'attribute' => 'expires',
-							'format' => ['date', 'php:Y-m-d H:i:s P']
-						],
+            'expires:datetime',
             'scope',
 						['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}']
         ],

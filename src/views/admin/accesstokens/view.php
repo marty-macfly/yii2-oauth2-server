@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'access_token',
             'client_id',
             'user_id',
-            'expires',
+            'expires:datetime',
             'scope',
         ],
     ]) ?>
