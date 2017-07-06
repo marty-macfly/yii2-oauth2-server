@@ -1,5 +1,6 @@
 <?php
 
+use Yii;
 use yii\helpers\Html;
 use yii\grid\GridView;
 /* @var $this yii\web\View */
@@ -31,6 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'client_id',
             'user_id',
             'expires',
+						[
+							'attribute' => 'expires',
+							'format' => ['date', 'php:Y-m-d H:i:s P']
+						],
             'scope',
 						['class' => 'yii\grid\ActionColumn', 'template' => '{view}{update}{delete}']
         ],
