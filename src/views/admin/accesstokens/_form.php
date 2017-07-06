@@ -26,7 +26,8 @@ use filsh\yii2\oauth2server\models\OauthClients;
 	?>
 
 	<?= $form->field($model, 'expires')->widget(DateControl::classname(), [
-		'type'					=> 'datetime',
+		'type'				=> 'datetime',
+		'saveFormat'	=> 'php:Y-m-d H:i:s',
 		]);
 	?>
 
