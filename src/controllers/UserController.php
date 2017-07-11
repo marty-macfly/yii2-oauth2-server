@@ -58,9 +58,9 @@ class UserController extends Controller
 
         foreach($this->module->userAttributes as $name)
         {
-            if($identity->hasProperty($name))
+            if(($value = ArrayHelper::getValue($identity, $name)) !== null)
             {
-                $user[$name]	=	$identity->$name;
+                $user[$name] = $value;
             }
         };
 
