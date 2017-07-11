@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'redirect_uri')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'grant_types')->checkboxList([
-        'client_credentials'		=> 'Client credentials',
+        'client_credentials'	=> 'Client credentials',
         'authorization_code'	=> 'Authorization code',
         'password'						=> 'Password',
         'implicit'						=> 'Implicit',
