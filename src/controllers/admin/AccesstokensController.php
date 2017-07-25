@@ -128,7 +128,7 @@ class AccesstokensController extends Controller
         $model			= $this->findModel($id);
         $client_id	= $model->client_id;
         $model->delete();
-        return $this->redirect(['clients/accesstoken','client_id'=>$client_id]);
+        return $this->redirect(['admin/accesstokens','SearchAccesstokensModel[client_id]'=>$client_id]);
     }
 
     /**
