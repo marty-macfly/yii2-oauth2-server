@@ -3,13 +3,40 @@ yii2-oauth2-server
 
 A wrapper for [Filsh/yii2-oauth2server](https://github.com/Filsh/yii2-oauth2-server) which implement an [OAuth2 Server](https://github.com/bshaffer/oauth2-server-php)
 
-Add missing code that make it easy to use with social network aware user module like the one from [dektrium/yii2-user](https://github.com/dektrium/yii2-user), you can use the [macfly/yii2-authclient-oauth2](https://github.com/Marty-Macfly/yii2-authclient-oauth2) which work with it natively
+Add missing code that make it easy to use with social network aware user module like the one from [dektrium/yii2-user](https://github.com/dektrium/yii2-user), you can use the [macfly/yii2-authclient-oauth2](https://github.com/Marty-Macfly/yii2-authclient-oauth2) which work with it out off the box.
 
 Add controller:
 
 * [Authorize](http://bshaffer.github.io/oauth2-server-php-docs/controllers/authorize/)
 * [Token](http://bshaffer.github.io/oauth2-server-php-docs/controllers/token/)
 * User (Provide user information id, username, e-mail, ...)
+
+> /!\ with version 2.0.13 of the Yii framework there is [an issue with Filsh/yii2-oauth2server](https://github.com/Filsh/yii2-oauth2-server/issues/134), you can fix it by updated your `composer.json` with the following
+
+```json
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Marty-Macfly/yii2-oauth2-server-1"
+        }
+    ],
+
+...
+
+    "require": {
+
+...
+
+        "filsh/yii2-oauth2-server": "2.0.2.x-dev",
+
+...
+
+    },
+
+...
+        
+```
+
 
 Installation
 ------------
@@ -99,7 +126,7 @@ Usage
 
 You can see the filsh documentation to use token (https://github.com/Filsh/yii2-oauth2-server/tree/v2.0.0#usage)
 
-Admin interface 
+Admin interface
 -----
 
 Manage client credentials
