@@ -66,7 +66,8 @@ class SearchAccesstokensModel extends OauthAccessTokens
         $query->andFilterWhere(['like', 'access_token', $this->access_token])
             ->andFilterWhere(['like', 'client_id', $this->client_id])
             ->andFilterWhere(['like', 'scope', $this->scope])
-            ->andFilterWhere(['IN', 'client_id', $array_client_id]);;
+            ->andFilterWhere(['IN', 'client_id', $array_client_id]);
+        ;
 
         return $dataProvider;
     }

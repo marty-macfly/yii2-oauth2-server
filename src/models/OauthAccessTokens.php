@@ -22,7 +22,7 @@ class OauthAccessTokens extends \filsh\yii2\oauth2server\models\OauthAccessToken
      */
     public function rules()
     {
-        $rules	= parent::rules();
+        $rules = parent::rules();
 
         unset($rules['user_id']);
 

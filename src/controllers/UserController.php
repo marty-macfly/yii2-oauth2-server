@@ -28,9 +28,9 @@ class UserController extends Controller
      */
     public function behaviors()
     {
-        $behaviors										= parent::behaviors();
-        $behaviors['authenticator']		= [
-            'class' 			=> CompositeAuth::className(),
+        $behaviors                                        = parent::behaviors();
+        $behaviors['authenticator']        = [
+            'class'            => CompositeAuth::className(),
             'authMethods' => [
                 ['class' => HttpBearerAuth::className()],
                 ['class' => QueryParamAuth::className(), 'tokenParam' => 'accessToken'],
@@ -42,7 +42,7 @@ class UserController extends Controller
                 'index' => ['get'],
             ],
         ];
-        $behaviors['exceptionFilter']	= [
+        $behaviors['exceptionFilter']    = [
             'class' => ErrorToExceptionFilter::className()
         ];
         return $behaviors;
@@ -53,13 +53,11 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        $identity	= Yii::$app->user->getIdentity();
-        $user			= [];
+        $identity    = Yii::$app->user->getIdentity();
+        $user            = [];
 
-        foreach($this->module->userAttributes as $name)
-        {
-            if(($value = ArrayHelper::getValue($identity, $name)) !== null)
-            {
+        foreach ($this->module->userAttributes as $name) {
+            if (($value = ArrayHelper::getValue($identity, $name)) !== null) {
                 $user[$name] = $value;
             }
         };

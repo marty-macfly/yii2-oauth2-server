@@ -31,9 +31,8 @@ class ClientsController extends Controller
             ],
         ];
 
-        if(!empty($this->module->clientsAccessRules))
-        {
-            $behaviors['access']  = $this->module->clientsAccessRules;
+        if (!empty($this->module->clientsAccessRules)) {
+            $behaviors['access'] = $this->module->clientsAccessRules;
         }
 
         return $behaviors;
@@ -47,8 +46,7 @@ class ClientsController extends Controller
     {
         $params = Yii::$app->request->queryParams;
 
-        if(!Yii::$app->user->can($this->module->adminRole))
-        {
+        if (!Yii::$app->user->can($this->module->adminRole)) {
             $params['SearchClientsModel']['user_id'] = Yii::$app->user->id;
         }
 
@@ -82,24 +80,20 @@ class ClientsController extends Controller
     {
         $model = new OauthClients();
 
-        if ($model->load(Yii::$app->request->post()))
-        {
-            $model->grant_types = implode(" ",$model->grant_types);
-            if($model->save())
-            {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->grant_types = implode(" ", $model->grant_types);
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->client_id]);
-            }	else
-            {
+            } else {
                 return $this->render('create', [
-                    'model'		=> $model,
-                    'module'	=> $this->module,
+                    'model'  => $model,
+                    'module' => $this->module,
                 ]);
             }
-        } else
-        {
+        } else {
             return $this->render('create', [
-                'model'		=> $model,
-                'module'	=> $this->module,
+                'model'  => $model,
+                'module' => $this->module,
             ]);
         }
     }
@@ -112,27 +106,23 @@ class ClientsController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model								= $this->findModel($id);
-        $model->grant_types	= explode(" ",$model->grant_types);
+        $model = $this->findModel($id);
+        $model->grant_types = explode(" ", $model->grant_types);
 
-        if($model->load(Yii::$app->request->post()))
-        {
-            $model->grant_types = implode(" ",$model->grant_types);
-            if($model->save())
-            {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->grant_types = implode(" ", $model->grant_types);
+            if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->client_id]);
-            } else
-            {
+            } else {
                 return $this->render('update', [
-                    'model'		=> $model,
-                    'module'	=> $this->module,
+                    'model'  => $model,
+                    'module' => $this->module,
                 ]);
             }
-        } else
-        {
+        } else {
             return $this->render('update', [
-                'model' 	=> $model,
-                'module'	=> $this->module,
+                'model'  => $model,
+                'module' => $this->module,
             ]);
         }
     }
@@ -159,11 +149,9 @@ class ClientsController extends Controller
      */
     protected function findModel($id)
     {
-        if(($model = OauthClients::findOne($id)) !== null)
-        {
+        if (($model = OauthClients::findOne($id)) !== null) {
             return $model;
-        } else
-        {
+        } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }

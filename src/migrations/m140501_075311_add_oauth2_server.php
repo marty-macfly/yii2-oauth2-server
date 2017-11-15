@@ -4,16 +4,18 @@ use yii\db\Schema;
 
 class m140501_075311_add_oauth2_server extends \yii\db\Migration
 {
-
-    public function mysql($yes,$no='') {
+    public function mysql($yes, $no='')
+    {
         return $this->db->driverName === 'mysql' ? $yes : $no;
     }
 
-    public function primaryKey($columns = null) {
+    public function primaryKey($columns = null)
+    {
         return 'PRIMARY KEY (' . $this->db->getQueryBuilder()->buildColumns($columns) . ')';
     }
 
-    public function foreignKey($columns,$refTable,$refColumns,$onDelete = null,$onUpdate = null) {
+    public function foreignKey($columns, $refTable, $refColumns, $onDelete = null, $onUpdate = null)
+    {
         $builder = $this->db->getQueryBuilder();
         $sql = ' FOREIGN KEY (' . $builder->buildColumns($columns) . ')'
             . ' REFERENCES ' . $this->db->quoteTableName($refTable)
@@ -34,7 +36,7 @@ class m140501_075311_add_oauth2_server extends \yii\db\Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
 
-        $now            = $this->mysql('CURRENT_TIMESTAMP',"'now'");
+        $now            = $this->mysql('CURRENT_TIMESTAMP', "'now'");
         $on_update_now  = $this->mysql("ON UPDATE $now");
 
         $transaction = $this->db->beginTransaction();
@@ -56,7 +58,7 @@ class m140501_075311_add_oauth2_server extends \yii\db\Migration
                 'expires' => Schema::TYPE_TIMESTAMP . " NOT NULL DEFAULT $now $on_update_now",
                 'scope' => Schema::TYPE_STRING . '(2000) DEFAULT NULL',
                 $this->primaryKey('access_token'),
-                $this->foreignKey('client_id','{{%oauth_clients}}','client_id','CASCADE','CASCADE'),
+                $this->foreignKey('client_id', '{{%oauth_clients}}', 'client_id', 'CASCADE', 'CASCADE'),
             ], $tableOptions);
 
             $this->createTable('{{%oauth_refresh_tokens}}', [
@@ -66,7 +68,7 @@ class m140501_075311_add_oauth2_server extends \yii\db\Migration
                 'expires' => Schema::TYPE_TIMESTAMP . " NOT NULL DEFAULT $now $on_update_now",
                 'scope' => Schema::TYPE_STRING . '(2000) DEFAULT NULL',
                 $this->primaryKey('refresh_token'),
-                $this->foreignKey('client_id','{{%oauth_clients}}','client_id','CASCADE','CASCADE'),
+                $this->foreignKey('client_id', '{{%oauth_clients}}', 'client_id', 'CASCADE', 'CASCADE'),
             ], $tableOptions);
 
             $this->createTable('{{%oauth_authorization_codes}}', [
@@ -77,7 +79,7 @@ class m140501_075311_add_oauth2_server extends \yii\db\Migration
                 'expires' => Schema::TYPE_TIMESTAMP . " NOT NULL DEFAULT $now $on_update_now",
                 'scope' => Schema::TYPE_STRING . '(2000) DEFAULT NULL',
                 $this->primaryKey('authorization_code'),
-                $this->foreignKey('client_id','{{%oauth_clients}}','client_id','CASCADE','CASCADE'),
+                $this->foreignKey('client_id', '{{%oauth_clients}}', 'client_id', 'CASCADE', 'CASCADE'),
             ], $tableOptions);
 
             $this->createTable('{{%oauth_scopes}}', [

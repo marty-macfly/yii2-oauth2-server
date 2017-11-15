@@ -21,8 +21,7 @@ class BlameableBehavior extends \yii\behaviors\BlameableBehavior
     protected function getValue($event)
     {
         $createdByAttribute = $this->createdByAttribute;
-        if($event->name == 'beforeInsert' && !empty($this->owner->$createdByAttribute))
-        {
+        if ($event->name == 'beforeInsert' && !empty($this->owner->$createdByAttribute)) {
             return $this->owner->$createdByAttribute;
         }
 

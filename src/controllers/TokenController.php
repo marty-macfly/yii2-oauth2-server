@@ -21,7 +21,7 @@ class TokenController extends \filsh\yii2\oauth2server\controllers\RestControlle
      */
     public function behaviors()
     {
-        $behaviors	= parent::behaviors();
+        $behaviors = parent::behaviors();
         $behaviors['verbs'] = [
             'class'   => VerbFilter::className(),
             'actions' => [

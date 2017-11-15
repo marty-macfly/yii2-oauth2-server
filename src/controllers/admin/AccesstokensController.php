@@ -29,9 +29,8 @@ class AccesstokensController extends Controller
             ],
         ];
 
-        if(!empty($this->module->accesstokensAccessRules))
-        {
-            $behaviors['access']	= $this->module->accesstokensAccessRules;
+        if (!empty($this->module->accesstokensAccessRules)) {
+            $behaviors['access'] = $this->module->accesstokensAccessRules;
         }
 
         return $behaviors;
@@ -43,15 +42,14 @@ class AccesstokensController extends Controller
      */
     public function actionIndex()
     {
-        $params	= Yii::$app->request->queryParams;
+        $params = Yii::$app->request->queryParams;
 
-        if(!Yii::$app->user->can($this->module->adminRole))
-        {
-            $params['SearchAccesstokensModel']['user_id']	= Yii::$app->user->id;
+        if (!Yii::$app->user->can($this->module->adminRole)) {
+            $params['SearchAccesstokensModel']['user_id']    = Yii::$app->user->id;
         }
 
-        $searchModel	= new SearchAccesstokensModel();
-        $dataProvider	= $searchModel->search($params);
+        $searchModel  = new SearchAccesstokensModel();
+        $dataProvider = $searchModel->search($params);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -78,19 +76,17 @@ class AccesstokensController extends Controller
      */
     public function actionCreate($client_id = null)
     {
-        $model                  = new OauthAccessTokens();
-        $model->client_id		= $client_id;
-        $model->expires			= Yii::$app->formatter->asDatetime(time() + $this->module->tokenAccessLifetime);
-        $model->access_token    = substr(hash('sha512', mt_rand() . mt_rand() . mt_rand() . mt_rand() . microtime(true) . uniqid(mt_rand(), true)), 0, 40);
+        $model               = new OauthAccessTokens();
+        $model->client_id    = $client_id;
+        $model->expires      = Yii::$app->formatter->asDatetime(time() + $this->module->tokenAccessLifetime);
+        $model->access_token = substr(hash('sha512', mt_rand() . mt_rand() . mt_rand() . mt_rand() . microtime(true) . uniqid(mt_rand(), true)), 0, 40);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->access_token]);
-        } else
-        {
+        } else {
             return $this->render('create', [
-                'model'		=> $model,
-                'module'	=> $this->module,
+                'model'  => $model,
+                'module' => $this->module,
             ]);
         }
     }
@@ -105,14 +101,12 @@ class AccesstokensController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save())
-        {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->access_token]);
-        } else
-        {
+        } else {
             return $this->render('update', [
-                'model'		=> $model,
-                'module'	=> $this->module,
+                'model'  => $model,
+                'module' => $this->module,
             ]);
         }
     }
@@ -125,8 +119,8 @@ class AccesstokensController extends Controller
      */
     public function actionDelete($id)
     {
-        $model			= $this->findModel($id);
-        $client_id	= $model->client_id;
+        $model     = $this->findModel($id);
+        $client_id = $model->client_id;
         $model->delete();
         return $this->redirect(['admin/accesstokens','SearchAccesstokensModel[client_id]'=>$client_id]);
     }
@@ -140,11 +134,9 @@ class AccesstokensController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = OauthAccessTokens::findOne($id)) !== null)
-        {
+        if (($model = OauthAccessTokens::findOne($id)) !== null) {
             return $model;
-        } else
-        {
+        } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }

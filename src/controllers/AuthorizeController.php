@@ -16,13 +16,13 @@ class AuthorizeController extends Controller
      */
     public function behaviors()
     {
-        $behaviors										= parent::behaviors();
+        $behaviors = parent::behaviors();
         $behaviors['exceptionFilter'] = [
-            'class'			=> ErrorToExceptionFilter::className()
+            'class' => ErrorToExceptionFilter::className()
         ];
-        $behaviors['verbs']						= [
-            'class'		=> VerbFilter::className(),
-            'actions'	=> [
+        $behaviors['verbs']                        = [
+            'class' => VerbFilter::className(),
+            'actions' => [
                 'index' => ['get'],
             ],
         ];
@@ -36,9 +36,9 @@ class AuthorizeController extends Controller
             return Yii::$app->user->loginRequired();
         }
 
-        $server		= $this->module->getServer();
-        $request	= $this->module->getRequest();
-        $response	= $server->handleAuthorizeRequest($request, new \OAuth2\Response(), true, Yii::$app->user->getID());
+        $server = $this->module->getServer();
+        $request = $this->module->getRequest();
+        $response = $server->handleAuthorizeRequest($request, new \OAuth2\Response(), true, Yii::$app->user->getID());
 
         Yii::$app->response->statusCode = $response->getStatusCode();
 
