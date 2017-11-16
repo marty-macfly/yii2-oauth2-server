@@ -26,14 +26,13 @@ use filsh\yii2\oauth2server\models\OauthClients;
     ?>
 
     <?= $form->field($model, 'expires')->widget(DateControl::classname(), [
-        'type'				=> 'datetime',
-        'saveFormat'	=> 'php:Y-m-d H:i:s',
+        'type'       => 'datetime',
+        'saveFormat' => 'php:Y-m-d H:i:s',
     ]);
     ?>
 
     <?php
-    if(\Yii::$app->user->can($module->adminRole))
-    {
+    if (\Yii::$app->user->can($module->adminRole)) {
         echo $form->field($model, 'user_id')->textInput();
     }
     ?>
