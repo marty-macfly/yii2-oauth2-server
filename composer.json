@@ -21,7 +21,7 @@
       }
   ],
   "require": {
-    "yiisoft/yii2": "2.0.12",
+    "yiisoft/yii2": "~2.0.5",
     "kartik-v/yii2-datecontrol": "*",
     "kartik-v/yii2-widget-datetimepicker": "*",
     "filsh/yii2-oauth2-server": "2.0.2.x-dev"
