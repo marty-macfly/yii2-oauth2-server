@@ -3,15 +3,13 @@
 namespace macfly\oauth2server;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 class Module extends \yii\base\Module
 {
     public $tokenParamName          = 'accessToken';
     public $tokenAccessLifetime     = 3600 * 24;
     public $userModel               = 'app\models\User';
-    public $accesstokensAccessRules = [];
-    public $clientsAccessRules      = [];
-
     public $userAttributes          = [
         'id',
         'username',
@@ -65,5 +63,18 @@ class Module extends \yii\base\Module
     {
         $oauth2   = $this->getModule('oauth2');
         return $oauth2->getRequest();
+    }
+
+    public static function getMe($app)
+    {
+        foreach ($app->getModules() as $id => $mod) {
+            if (is_array($mod) && (ArrayHelper::getValue($mod, 'class') == self::className() || ArrayHelper::getValue($mod, 0) == self::className())) {
+                return $app->getModule($id);
+            } elseif (is_object($mod) && is_a($mod, self::className())) {
+                return $mod;
+            }
+        }
+
+        return null;
     }
 }

@@ -19,8 +19,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->client_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
+            'confirm' => 'Are you sure you want to delete this item?',
+            'method' => 'post',
             ],
         ]) ?>
     </p>

@@ -20,7 +20,7 @@ class AccesstokensController extends Controller
      */
     public function behaviors()
     {
-        $behaviors = [
+        return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -28,12 +28,6 @@ class AccesstokensController extends Controller
                 ],
             ],
         ];
-
-        if (!empty($this->module->accesstokensAccessRules)) {
-            $behaviors['access'] = $this->module->accesstokensAccessRules;
-        }
-
-        return $behaviors;
     }
 
     /**

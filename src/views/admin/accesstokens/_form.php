@@ -20,9 +20,9 @@ use filsh\yii2\oauth2server\models\OauthClients;
 
     <?= $form->field($model, 'client_id', [
         'inputOptions' => [
-            'autofocus' => 'autofocus',
-            'class' => 'form-control',
-            'tabindex' => '1']])->dropDownList(ArrayHelper::map(OauthClients::find()->all(), 'client_id', 'client_id'));
+        'autofocus' => 'autofocus',
+        'class' => 'form-control',
+        'tabindex' => '1']])->dropDownList(ArrayHelper::map(OauthClients::find()->all(), 'client_id', 'client_id'));
     ?>
 
     <?= $form->field($model, 'expires')->widget(DateControl::classname(), [
@@ -31,11 +31,7 @@ use filsh\yii2\oauth2server\models\OauthClients;
     ]);
     ?>
 
-    <?php
-    if (\Yii::$app->user->can($module->adminRole)) {
-        echo $form->field($model, 'user_id')->textInput();
-    }
-    ?>
+    <?= $form->field($model, 'user_id')->textInput(); ?>
 
     <?= $form->field($model, 'scope')->textInput(['maxlength' => true]) ?>
 

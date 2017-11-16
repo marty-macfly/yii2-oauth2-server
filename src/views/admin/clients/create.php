@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 
-
 /* @var $this yii\web\View */
 /* @var $model filsh\yii2\oauth2server\models\OauthClients */
 
@@ -15,8 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= $this->render('_form', [
-        'model'		=> $model,
-        'module'	=> $module,
+        'model'        => $model,
     ]) ?>
 
 </div>

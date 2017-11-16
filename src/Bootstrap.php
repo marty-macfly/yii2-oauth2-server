@@ -9,7 +9,7 @@ class Bootstrap extends \filsh\yii2\oauth2server\Bootstrap
      */
     public function bootstrap($app)
     {
-        if ($app->hasModule('oauth2') && ($module = $app->getModule('oauth2')) instanceof Module) {
+        if (($module = Module::getMe($app)) !== null) {
             parent::bootstrap($module);
         }
     }

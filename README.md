@@ -67,13 +67,11 @@ To use this extension,  simply add the following code in your application config
         'tokenParamName' => 'accessToken',
         'tokenAccessLifetime' => 3600 * 24, // Default token lifetime
         'userModel' => 'app\models\User',
-        'userAttributes'	=> [ // List of user attributes you want to provide through the /oauth2/user api call
+        'userAttributes' => [ // List of user attributes you want to provide through the /oauth2/user api call
             'id',
             'username',
             'email',
         ],
-        'accesstokensAccessRules' => [], // access rule for admin/accesstokens controller
-        'clientsAccessRules' => [], // access rule for admin/clients controller
     ]
     // yii2-oauth2-server is using the kartik\datecontrol\Module so you should define the configuration of the module
     // See more details at http://demos.krajee.com/datecontrol

@@ -22,7 +22,7 @@ class ClientsController extends Controller
      */
     public function behaviors()
     {
-        $behaviors = [
+        return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -30,12 +30,6 @@ class ClientsController extends Controller
                 ],
             ],
         ];
-
-        if (!empty($this->module->clientsAccessRules)) {
-            $behaviors['access'] = $this->module->clientsAccessRules;
-        }
-
-        return $behaviors;
     }
 
     /**
