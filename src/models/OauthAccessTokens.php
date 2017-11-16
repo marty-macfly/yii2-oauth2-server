@@ -37,4 +37,13 @@ class OauthAccessTokens extends \filsh\yii2\oauth2server\models\OauthAccessToken
     {
         return $this->hasOne(OauthClients::className(), ['client_id' => 'client_id']);
     }
+
+    public function getUser()
+    {
+        $module = Module::getInstance();
+        if ($module !== null && ($user = $module->get('user', false)) !== null && $user->identityClass !== null) {
+            return $this->hasOne($user->identityClass, ['id' => 'user_id']);
+        }
+        return null;
+    }
 }
