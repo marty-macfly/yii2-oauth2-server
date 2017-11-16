@@ -29,11 +29,38 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'client_id',
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    return Html::a(sprintf("%s (%d)", ($model->user !== null) ? $model->user->username : '?', $model->user_id), ['/user/admin/update', 'id' => $model->user_id]);
+                },
+                'format' => 'html',
+            ],
             'client_secret',
-            'redirect_uri',
+            [
+                'attribute' => 'redirect_uri',
+                'value' => function ($model) {
+                    if ($model->redirect_uri === null) {
+                        return '';
+                    }
+
+                    $value = '';
+                    foreach (explode(" ", $model->redirect_uri) as $uri) {
+                        $value .= Html::a($model->redirect_uri, $model->redirect_uri);
+                    }
+                    return $value;
+                },
+                'format' => 'html',
+            ],
             'grant_types',
             'scope',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    return Html::a(sprintf("%s (%d)", ($model->user !== null) ? $model->user->username : '?', $model->user_id), ['/user/admin/update', 'id' => $model->user_id]);
+                },
+                'format' => 'html',
+            ],
         ],
     ]) ?>
 

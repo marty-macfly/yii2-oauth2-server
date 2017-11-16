@@ -29,8 +29,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'access_token',
-            'client_id',
-            'user_id',
+            [
+                'attribute' => 'client_id',
+                'value' => function ($model) {
+                    return Html::a($model->client_id, ['admin/clients/view', 'id' => $model->client_id]);
+                },
+                'format' => 'html',
+            ],
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    return Html::a(sprintf("%s (%d)", ($model->user !== null) ? $model->user->username : '?', $model->user_id), ['/user/admin/update', 'id' => $model->user_id]);
+                },
+                'format' => 'html',
+            ],
             'expires:datetime',
             'scope',
         ],
