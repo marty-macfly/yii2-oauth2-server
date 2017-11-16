@@ -3,30 +3,34 @@
 namespace macfly\oauth2server\models;
 
 use Yii;
+use macfly\oauth2server\Module;
 use macfly\oauth2server\behaviors\BlameableBehavior;
 
 class OauthAccessTokens extends \filsh\yii2\oauth2server\models\OauthAccessTokens
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
+    public function loadDefaultValues($skipIfSet = true)
     {
-        return [
-            BlameableBehavior::className(),
-        ];
+        parent::loadDefaultValues($skipIfSet);
+
+        $this->expires = Yii::$app->formatter->asDatetime(time() + Module::getInstance()->tokenAccessLifetime, 'yyyy-MM-dd HH:mm:ss');
+
+        if (!$skipIfSet || $this->access_token === null) {
+            $this->access_token = substr(hash('sha512', mt_rand() . mt_rand() . mt_rand() . mt_rand() . microtime(true) . uniqid(mt_rand(), true)), 0, 40);
+        }
+
+        return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
+    public function beforeValidate()
     {
-        $rules = parent::rules();
+        $isValid = parent::beforeValidate();
 
-        unset($rules['user_id']);
+        // If user_id not set but we've got a client_id get user_id of client_id
+        if (!isset($this->user_id) && isset($this->client_id)) {
+            $this->user_id = $this->client->user_id;
+        }
 
-        return $rules;
+        return $isValid;
     }
 
     public function getClient()

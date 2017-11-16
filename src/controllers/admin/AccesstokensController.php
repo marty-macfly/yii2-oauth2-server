@@ -76,10 +76,9 @@ class AccesstokensController extends Controller
      */
     public function actionCreate($client_id = null)
     {
-        $model               = new OauthAccessTokens();
-        $model->client_id    = $client_id;
-        $model->expires      = Yii::$app->formatter->asDatetime(time() + $this->module->tokenAccessLifetime);
-        $model->access_token = substr(hash('sha512', mt_rand() . mt_rand() . mt_rand() . mt_rand() . microtime(true) . uniqid(mt_rand(), true)), 0, 40);
+        $model = new OauthAccessTokens();
+        $model->loadDefaultValues();
+        $model->client_id = $client_id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->access_token]);
