@@ -5,7 +5,7 @@ namespace macfly\oauth2server\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use filsh\yii2\oauth2server\models\OauthAccessTokens;
+use macfly\oauth2server\models\OauthAccessTokens;
 
 /**
  * SearchAccesstokensModel represents the model behind the search form about `filsh\yii2\oauth2server\models\OauthAccessTokens`.
