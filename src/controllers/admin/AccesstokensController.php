@@ -43,11 +43,6 @@ class AccesstokensController extends Controller
     public function actionIndex()
     {
         $params = Yii::$app->request->queryParams;
-
-        if (!Yii::$app->user->can($this->module->adminRole)) {
-            $params['SearchAccesstokensModel']['user_id']    = Yii::$app->user->id;
-        }
-
         $searchModel  = new SearchAccesstokensModel();
         $dataProvider = $searchModel->search($params);
 

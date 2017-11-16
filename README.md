@@ -72,7 +72,6 @@ To use this extension,  simply add the following code in your application config
             'username',
             'email',
         ],
-        'adminRole' => 'admin', // Rbac permission name to manage all users oauth client and oauth access token
         'accesstokensAccessRules' => [], // access rule for admin/accesstokens controller
         'clientsAccessRules' => [], // access rule for admin/clients controller
     ]
@@ -95,6 +94,8 @@ You should implement (for convenience a trait is provide):
 - findIdentityByAccessToken()
 - checkUserCredentials()
 - getUserDetails()
+- getAuthKey()
+- getOauthClient() mapping of one user to one oauth client.
 
 You can extend the model if you prefer it (please, remember to update the config files) :
 

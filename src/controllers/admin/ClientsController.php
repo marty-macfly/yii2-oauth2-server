@@ -45,11 +45,6 @@ class ClientsController extends Controller
     public function actionIndex()
     {
         $params = Yii::$app->request->queryParams;
-
-        if (!Yii::$app->user->can($this->module->adminRole)) {
-            $params['SearchClientsModel']['user_id'] = Yii::$app->user->id;
-        }
-
         $searchModel = new SearchClientsModel();
         $dataProvider = $searchModel->search($params);
 
