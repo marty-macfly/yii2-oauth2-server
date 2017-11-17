@@ -51,9 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'user_id',
                 'value' => function ($model) {
-                    return Html::a(sprintf("%s (%d)", ($model->user !== null) ? $model->user->username : '?', $model->user_id), ['/user/admin/update', 'id' => $model->user_id]);
+                    return sprintf("%s (%d)", ($model->user !== null) ? $model->user->username : '?', $model->user_id);
                 },
-                'format' => 'html',
             ],
             [
                 'attribute' => 'access_token',
