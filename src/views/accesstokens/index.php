@@ -9,7 +9,7 @@ use yii\grid\GridView;
 
 $this->title = "Oauth Access Tokens";
 
-if (!is_null($searchModel->client_id)) {
+if (!empty($searchModel->client_id)) {
     $this->title .= sprintf(" of: %s", $searchModel->client_id);
     $this->params['breadcrumbs'][] = ['label' => 'Oauth Clients', 'url' => ['clients/index']];
     $this->params['breadcrumbs'][] = ['label' => $searchModel->client_id, 'url' => ['clients/view', 'id' => $searchModel->client_id]];
