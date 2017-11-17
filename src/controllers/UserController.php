@@ -1,6 +1,6 @@
 <?php
 
-namespace macfly\oauth2server\modules\api\controllers;
+namespace macfly\oauth2server\controllers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -8,12 +8,28 @@ use yii\filters\VerbFilter;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\rest\Controller;
+use yii\web\Response;
 
 use filsh\yii2\oauth2server\filters\auth\CompositeAuth;
 use filsh\yii2\oauth2server\filters\ErrorToExceptionFilter;
 
 class UserController extends Controller
 {
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        if (Yii::$app->has('user')) {
+            Yii::$app->user->enableSession = false;
+        }
+
+        // Default reply format is json for api
+        Yii::$app->response->format = Response::FORMAT_JSON;
+    }
+    
     /**
      * @inheritdoc
      */

@@ -44,9 +44,6 @@ class Module extends \yii\base\Module
                     ],
                 ],
             ],
-            'api' => [
-                'class' => 'macfly\oauth2server\modules\api\Module',
-            ],
         ];
     }
 
@@ -58,14 +55,12 @@ class Module extends \yii\base\Module
      */
     public function getServer()
     {
-        $oauth2   = $this->getModule('oauth2');
-        return $oauth2->getServer();
+        return self::getMe(Yii::$app)->getServer();
     }
 
     public function getRequest()
     {
-        $oauth2   = $this->getModule('oauth2');
-        return $oauth2->getRequest();
+        return self::getMe(Yii::$app)->getRequest();
     }
 
     public static function getMe($app)

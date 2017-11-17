@@ -119,9 +119,9 @@ Usage
 
 # List of available actions
 
-- **/oauth2/authorize**
-- **/oauth2/api/token**
-- **/oauth2/api/user**
+- **/oauth2/authorize**: Session verification from a browser
+- **/oauth2/token**: Get token
+- **/oauth2/user**: Get user information
 
 You can see the filsh documentation to use token (https://github.com/Filsh/yii2-oauth2-server/tree/v2.0.0#usage)
 

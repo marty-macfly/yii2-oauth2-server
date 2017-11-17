@@ -1,12 +1,27 @@
 <?php
 
-namespace macfly\oauth2server\modules\api\controllers;
+namespace macfly\oauth2server\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
 
 class TokenController extends \filsh\yii2\oauth2server\controllers\RestController
 {
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        if (Yii::$app->has('user')) {
+            Yii::$app->user->enableSession = false;
+        }
+
+        // Default reply format is json for api
+        Yii::$app->response->format = Response::FORMAT_JSON;
+    }
+
     /**
      * @inheritdoc
      */
