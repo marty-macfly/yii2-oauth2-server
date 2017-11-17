@@ -3,6 +3,7 @@
 namespace macfly\oauth2server\modules\api;
 
 use Yii;
+use yii\web\Response;
 
 class Module extends \yii\base\Module
 {

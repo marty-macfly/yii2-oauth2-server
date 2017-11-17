@@ -1,6 +1,6 @@
 <?php
 
-namespace macfly\oauth2server\controllers\admin;
+namespace macfly\oauth2server\controllers;
 
 use macfly\oauth2server\models\OauthClients;
 use macfly\oauth2server\models\SearchClientsModel;

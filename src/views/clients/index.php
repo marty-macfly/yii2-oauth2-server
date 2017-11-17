@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'client_id',
                 'value' => function ($model) {
-                    return Html::a($model->client_id, ['admin/clients/view', 'id' => $model->client_id]);
+                    return Html::a($model->client_id, ['clients/view', 'id' => $model->client_id]);
                 },
                 'format' => 'html',
             ],
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'access_token',
                 'value'    => function ($model) {
                     $label = "<span class='pull-right'><kbd>" . count($model->oauthAccessTokens) . "</kbd></span><span class='pull-left'>Access token</span>";
-                    return Html::a($label, ['admin/accesstokens', 'SearchAccesstokensModel[client_id]' => $model->client_id]);
+                    return Html::a($label, ['accesstokens', 'SearchAccesstokensModel[client_id]' => $model->client_id]);
                 },
                 'format' => 'html',
             ],

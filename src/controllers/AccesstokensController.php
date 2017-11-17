@@ -1,6 +1,6 @@
 <?php
 
-namespace macfly\oauth2server\controllers\admin;
+namespace macfly\oauth2server\controllers;
 
 use Yii;
 use yii\web\Controller;
@@ -110,7 +110,7 @@ class AccesstokensController extends Controller
         $model     = $this->findModel($id);
         $client_id = $model->client_id;
         $model->delete();
-        return $this->redirect(['admin/accesstokens','SearchAccesstokensModel[client_id]'=>$client_id]);
+        return $this->redirect(['accesstokens','SearchAccesstokensModel[client_id]'=>$client_id]);
     }
 
     /**

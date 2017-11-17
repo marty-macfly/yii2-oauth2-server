@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="oauth-access-tokens-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->access_token], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->access_token], [
@@ -32,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'client_id',
                 'value' => function ($model) {
-                    return Html::a($model->client_id, ['admin/clients/view', 'id' => $model->client_id]);
+                    return Html::a($model->client_id, ['clients/view', 'id' => $model->client_id]);
                 },
                 'format' => 'html',
             ],

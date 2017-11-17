@@ -11,8 +11,8 @@ $this->title = "Oauth Access Tokens";
 
 if (!is_null($searchModel->client_id)) {
     $this->title .= sprintf(" of: %s", $searchModel->client_id);
-    $this->params['breadcrumbs'][] = ['label' => 'Oauth Clients', 'url' => ['admin/clients/index']];
-    $this->params['breadcrumbs'][] = ['label' => $searchModel->client_id, 'url' => ['admin/clients/view', 'id' => $searchModel->client_id]];
+    $this->params['breadcrumbs'][] = ['label' => 'Oauth Clients', 'url' => ['clients/index']];
+    $this->params['breadcrumbs'][] = ['label' => $searchModel->client_id, 'url' => ['clients/view', 'id' => $searchModel->client_id]];
 }
 
 $this->params['breadcrumbs'][] = $this->title;
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'client_id',
                 'value' => function ($model) {
-                    return Html::a($model->client_id, ['admin/clients/view', 'id' => $model->client_id]);
+                    return Html::a($model->client_id, ['clients/view', 'id' => $model->client_id]);
                 },
                 'format' => 'html',
             ],
