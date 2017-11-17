@@ -76,13 +76,11 @@ class ClientsController extends Controller
             } else {
                 return $this->render('create', [
                     'model'  => $model,
-                    'module' => $this->module,
                 ]);
             }
         } else {
             return $this->render('create', [
                 'model'  => $model,
-                'module' => $this->module,
             ]);
         }
     }
@@ -105,13 +103,11 @@ class ClientsController extends Controller
             } else {
                 return $this->render('update', [
                     'model'  => $model,
-                    'module' => $this->module,
                 ]);
             }
         } else {
             return $this->render('update', [
                 'model'  => $model,
-                'module' => $this->module,
             ]);
         }
     }
