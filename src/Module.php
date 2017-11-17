@@ -55,12 +55,14 @@ class Module extends \yii\base\Module
      */
     public function getServer()
     {
-        return self::getMe(Yii::$app)->getServer();
+        $oauth2 = $this->getModule('oauth2');
+        return $oauth2->getServer();
     }
 
     public function getRequest()
     {
-        return self::getMe(Yii::$app)->getRequest();
+        $oauth2 = $this->getModule('oauth2');
+        return $oauth2->getRequest();
     }
 
     public static function getMe($app)
