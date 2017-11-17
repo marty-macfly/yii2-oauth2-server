@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Create Oauth Access Tokens';
 
-if (!is_null($model->client_id)) {
+if (!empty($model->client_id)) {
     $this->title .= sprintf(" for: %s", $model->client_id);
     $this->params['breadcrumbs'][] = ['label' => 'Oauth Clients', 'url' => ['clients/index']];
     $this->params['breadcrumbs'][] = ['label' => $model->client_id, 'url' => ['clients/view', 'id' => $model->client_id]];
