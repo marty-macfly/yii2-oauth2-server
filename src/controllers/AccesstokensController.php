@@ -74,7 +74,6 @@ class AccesstokensController extends Controller
         } else {
             return $this->render('create', [
                 'model'  => $model,
-                'module' => $this->module,
             ]);
         }
     }
@@ -94,7 +93,6 @@ class AccesstokensController extends Controller
         } else {
             return $this->render('update', [
                 'model'  => $model,
-                'module' => $this->module,
             ]);
         }
     }
