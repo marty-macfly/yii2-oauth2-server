@@ -44,6 +44,9 @@ class Module extends \yii\base\Module
                     ],
                 ],
             ],
+            'api' => [
+                'class' => 'macfly\oauth2server\modules\api\Module',
+            ],
         ];
     }
 

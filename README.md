@@ -120,8 +120,8 @@ Usage
 # List of available actions
 
 - **/oauth2/authorize**
-- **/oauth2/token**
-- **/oauth2/user**
+- **/oauth2/api/token**
+- **/oauth2/api/user**
 
 You can see the filsh documentation to use token (https://github.com/Filsh/yii2-oauth2-server/tree/v2.0.0#usage)
 
@@ -130,22 +130,22 @@ Admin interface
 
 Manage client credentials
 
-- **/oauth2/admin/clients**
+- **/oauth2/clients**
 
 CRUD operations
 
-- **/oauth2/admin/clients/index**
-- **/oauth2/admin/clients/create**
-- **/oauth2/admin/clients/update**
-- **/oauth2/admin/clients/delete**
+- **/oauth2/clients/index**
+- **/oauth2/clients/create**
+- **/oauth2/clients/update**
+- **/oauth2/clients/delete**
 
 Manage access token
 
-- **/oauth2/admin/accesstokens**
+- **/oauth2/accesstokens**
 
 CRUD operations
 
-- **/oauth2/admin/accesstokens/index**
-- **/oauth2/admin/accesstokens/create**
-- **/oauth2/admin/accesstokens/update**
-- **/oauth2/admin/accesstokens/delete**
+- **/oauth2/accesstokens/index**
+- **/oauth2/accesstokens/create**
+- **/oauth2/accesstokens/update**
+- **/oauth2/accesstokens/delete**

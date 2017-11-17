@@ -1,6 +1,6 @@
 <?php
 
-namespace macfly\oauth2server\controllers;
+namespace macfly\oauth2server\modules\api\controllers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -17,27 +17,18 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function init()
-    {
-        parent::init();
-        Yii::$app->user->enableSession = false;
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function behaviors()
     {
-        $behaviors                                        = parent::behaviors();
-        $behaviors['authenticator']        = [
-            'class'            => CompositeAuth::className(),
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => CompositeAuth::className(),
             'authMethods' => [
                 ['class' => HttpBearerAuth::className()],
                 ['class' => QueryParamAuth::className(), 'tokenParam' => 'accessToken'],
             ],
         ];
         $behaviors['verbs']           = [
-            'class'   => VerbFilter::className(),
+            'class' => VerbFilter::className(),
             'actions' => [
                 'index' => ['get'],
             ],
@@ -53,15 +44,14 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        $identity    = Yii::$app->user->getIdentity();
-        $user            = [];
+        $identity = Yii::$app->user->getIdentity();
+        $user = [];
 
         foreach ($this->module->userAttributes as $name) {
             if (($value = ArrayHelper::getValue($identity, $name)) !== null) {
                 $user[$name] = $value;
             }
         };
-
         return $user;
     }
 }
